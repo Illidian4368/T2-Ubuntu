@@ -2,7 +2,7 @@
 
 set -eu -o pipefail
 
-CODENAME=mantic
+CODENAME=noble
 
 echo >&2 "===]> Info: Configure environment... "
 
@@ -151,13 +151,13 @@ apt-get purge -y -qq \
   vim \
   binutils \
   linux-generic \
-  linux-headers-6.5.0-9 \
-  linux-headers-6.5.0-9-generic \
+  linux-headers-6.8.0-31 \
+  linux-headers-6.8.0-31-generic \
   linux-headers-generic \
-  linux-image-6.5.0-9-generic \
+  linux-image-6.8.0-31-generic \
   linux-image-generic \
-  linux-modules-6.5.0-9-generic \
-  linux-modules-extra-6.5.0-9-generic \
+  linux-modules-6.8.0-31-generic \
+  linux-modules-extra-6.8.0-31-generic \
   sddm-theme-debian-maui \
   gedit
 
