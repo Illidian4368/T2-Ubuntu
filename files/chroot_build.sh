@@ -118,6 +118,9 @@ apt-get install -y -qq -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="
   apfs-dkms \
   dmg2img
 
+apfs_ver=$(ls /usr/src | grep linux-apfs-rw | cut -d "-" -f 4)
+sudo dkms install -m linux-apfs-rw -v ${apfs_ver} -k KVER-t2-${CODENAME}
+
 echo >&2 "===]> Info: Change initramfs format (for grub)... "
 sed -i "s/COMPRESS=lz4/COMPRESS=gzip/g" "/etc/initramfs-tools/initramfs.conf"
 
