@@ -151,14 +151,8 @@ apt-get purge -y -qq \
   aisleriot \
   hitori \
   xiterm+thai \
-  make \
-  gcc \
   vim \
-  binutils \
   linux-generic \
-  linux-headers-6.8.0-31 \
-  linux-headers-6.8.0-31-generic \
-  linux-headers-generic \
   linux-image-6.8.0-31-generic \
   linux-image-generic \
   linux-modules-6.8.0-31-generic \
