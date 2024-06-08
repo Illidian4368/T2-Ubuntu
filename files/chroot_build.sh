@@ -108,7 +108,6 @@ apt-get install -y -qq -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="
   dkms \
   iwd \
   apple-t2-audio-config \
-  apfs-dkms \
   dmg2img
 
 echo >&2 "===]> Info: Change initramfs format (for grub)... "
@@ -123,9 +122,6 @@ printf 'apple-bce' >>/etc/modules-load.d/t2.conf
 #printf '\n### apple-bce start ###\nsnd\nsnd_pcm\napple-bce\n### apple-bce end ###' >>/etc/initramfs-tools/modules
 #printf '\n# display f* key in touchbar\noptions apple-ib-tb fnmode=1\n'  >> /etc/modprobe.d/apple-tb.conf
 #printf '\n# delay loading of the touchbar driver\ninstall apple-ib-tb /bin/sleep 7; /sbin/modprobe --ignore-install apple-ib-tb' >> /etc/modprobe.d/delay-tb.conf
-
-apfs_ver=$(ls /usr/src | grep linux-apfs-rw | cut -d "-" -f 4)
-dkms install -m linux-apfs-rw -v ${apfs_ver} -k KVER-t2-${CODENAME}
 
 echo >&2 "===]> Info: Update initramfs... "
 
