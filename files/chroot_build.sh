@@ -149,6 +149,9 @@ apt-get purge -y -qq \
   xiterm+thai \
   vim \
   linux-generic \
+  linux-headers-6.8.0-31 \
+  linux-headers-6.8.0-31-generic \
+  linux-headers-generic \
   linux-image-6.8.0-31-generic \
   linux-image-generic \
   linux-modules-6.8.0-31-generic \
