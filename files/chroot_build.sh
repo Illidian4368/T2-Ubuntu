@@ -115,7 +115,6 @@ apt-get install -y -qq -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="
   dkms \
   iwd \
   apple-t2-audio-config \
-  dmg2img \
   apple-firmware-script
 
 echo >&2 "===]> Info: Change initramfs format (for grub)... "
