@@ -86,22 +86,19 @@ firstChar=$(echo "$flavour" | cut -c1 | tr '[a-z]' '[A-Z]')
 restOfString=$(echo "$flavour" | cut -c2-)
 flavourcap="${firstChar}${restOfString}"
 
-if [ ! -f ${iso}.z01 ]; then
+if [ ! -f ${iso}.iso.00 ]; then
 	echo -e "\nDownloading Part 1 for ${flavourcap} ${ver}"
 	echo -e "\n"
-	curl -#L https://github.com/t2linux/T2-Ubuntu/releases/download/${latest}/${iso}.z01 > ${iso}.z01
+	curl -#L https://github.com/t2linux/T2-Ubuntu/releases/download/${latest}/${iso}.iso.00 > ${iso}.iso.00
 fi
-if [ ! -f ${iso}.zip ]; then
+if [ ! -f ${iso}.iso.01 ]; then
 	echo -e "\nDownloading Part 2 for ${flavourcap} ${ver}"
 	echo -e "\n"
-	curl -#L https://github.com/t2linux/T2-Ubuntu/releases/download/${latest}/${iso}.zip > ${iso}.zip
+	curl -#L https://github.com/t2linux/T2-Ubuntu/releases/download/${latest}/${iso}.iso.01 > ${iso}.iso.01
 fi
 echo -e "\nCreating ISO"
 
-isofinal=$RANDOM
-zip -F ${iso}.zip --out ${isofinal}.zip > /dev/null
-unzip ${isofinal}.zip > /dev/null
-mv $HOME/Downloads/repo/${iso}.iso $HOME/Downloads
+cat ${iso}.iso.* > ${iso}.iso
 
 echo -e "\nVerifying sha256 checksums"
 
@@ -126,9 +123,8 @@ echo -e "\nError: Failed to verify sha256 checksums of the ISO"
 rm $HOME/Downloads/${iso}.iso
 fi
 
-rm -r $HOME/Downloads/repo
-rm $HOME/Downloads/${isofinal}.zip
-rm $HOME/Downloads/${iso}.z??
+rm $HOME/Downloads/${iso}.iso.00
+rm $HOME/Downloads/${iso}.iso.01
 
 if [[ ${actual_iso_chksum} != ${downloaded_iso_chksum} ]]
 then
