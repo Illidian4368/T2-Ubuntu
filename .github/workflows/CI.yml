@@ -85,6 +85,7 @@ jobs:
 
           python3 update.py
           rm update.py
+          cd -
 
       - name: Push updated links to t2linux.org
         if: github.ref == 'refs/heads/kubuntuMainline'
