@@ -7,7 +7,7 @@ on:
 jobs:
 
   ISO:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
@@ -23,6 +23,7 @@ jobs:
           VER=$(egrep ^KERNEL_VERSION build.sh|cut -d= -f2)
           REL=$(grep "PKGREL=\d*" build.sh | cut -d = -f2)
           echo Version is $VER
+          echo "kver=${VER}" >> $GITHUB_ENV
           echo "isotag=${VER}-${REL}" >> $GITHUB_ENV
 
       - name: Upload iso artifact
@@ -54,3 +55,47 @@ jobs:
           prerelease: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Update the json
+        if: github.ref == 'refs/heads/kubuntuMainline'
+        run: |
+          git clone https://github.com/t2linux/wiki.git
+          cd wiki/docs/tools
+
+          cat << EOF > update.py
+          import json
+          # Define the new links
+          new_link1 = "https://github.com/t2linux/T2-Ubuntu/releases/download/v${{ env.isotag }}/kubuntu-24.04-${{ env.kver }}-t2-noble.iso.00"
+          new_link2 = "https://github.com/t2linux/T2-Ubuntu/releases/download/v${{ env.isotag }}/kubuntu-24.04-${{ env.kver }}-t2-noble.iso.01"
+          # Load the JSON file
+          with open('distro-metadata.json', 'r') as file:
+              data = json.load(file)
+          # Function to update the links
+          def update_links(distros, name, new_links):
+              for distro in distros:
+                  if distro['name'] == name:
+                      distro['iso'] = new_links
+          # Update the links
+          update_links(data['all'], "Kubuntu 24.04 - Noble Numbat", [new_link1, new_link2])
+          # Save the updated JSON back to the file
+          with open('distro-metadata.json', 'w') as file:
+              json.dump(data, file, indent=2)
+          print("Links updated successfully.")
+          EOF
+
+          python3 update.py
+          rm update.py
+
+      - name: Push updated links to t2linux.org
+        if: github.ref == 'refs/heads/kubuntuMainline'
+        uses: cpina/github-action-push-to-another-repository@main
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.PAT }}
+        with:
+          source-directory: 'wiki'
+          destination-github-username: 't2linux'
+          destination-repository-name: 'wiki'
+          user-email: github-actions[bot]@users.noreply.github.com
+          user-name: github-actions[bot]
+          target-branch: main
+          commit-message: Distro metadata - Update Kubuntu 24.04 to v${{ env.isotag }}
