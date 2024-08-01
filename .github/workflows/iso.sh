@@ -86,16 +86,12 @@ firstChar=$(echo "$flavour" | cut -c1 | tr '[a-z]' '[A-Z]')
 restOfString=$(echo "$flavour" | cut -c2-)
 flavourcap="${firstChar}${restOfString}"
 
-if [ ! -f ${iso}.iso.00 ]; then
-	echo -e "\nDownloading Part 1 for ${flavourcap} ${ver}"
-	echo -e "\n"
-	curl -#L https://github.com/t2linux/T2-Ubuntu/releases/download/${latest}/${iso}.iso.00 > ${iso}.iso.00
-fi
-if [ ! -f ${iso}.iso.01 ]; then
-	echo -e "\nDownloading Part 2 for ${flavourcap} ${ver}"
-	echo -e "\n"
-	curl -#L https://github.com/t2linux/T2-Ubuntu/releases/download/${latest}/${iso}.iso.01 > ${iso}.iso.01
-fi
+echo -e "\nDownloading Part 1 for ${flavourcap} ${ver}\n"
+curl -#L -O -C - https://github.com/t2linux/T2-Ubuntu/releases/download/${latest}/${iso}.iso.00
+
+echo -e "\nDownloading Part 2 for ${flavourcap} ${ver}\n"
+curl -#L -O -C - https://github.com/t2linux/T2-Ubuntu/releases/download/${latest}/${iso}.iso.01
+
 echo -e "\nCreating ISO"
 
 cat ${iso}.iso.* > ${iso}.iso
