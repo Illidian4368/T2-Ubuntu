@@ -87,14 +87,10 @@ restOfString=$(echo "$flavour" | cut -c2-)
 flavourcap="${firstChar}${restOfString}"
 
 echo -e "\nDownloading Part 1 for ${flavourcap} ${ver}\n"
-curl -#L -O -C - https://github.com/t2linux/T2-Ubuntu/releases/download/${latest}/${iso}.iso.00
+curl -#L https://github.com/t2linux/T2-Ubuntu/releases/download/${latest}/${iso}.iso.00 > ${iso}.iso
 
 echo -e "\nDownloading Part 2 for ${flavourcap} ${ver}\n"
-curl -#L -O -C - https://github.com/t2linux/T2-Ubuntu/releases/download/${latest}/${iso}.iso.01
-
-echo -e "\nCreating ISO"
-
-cat ${iso}.iso.* > ${iso}.iso
+curl -#L https://github.com/t2linux/T2-Ubuntu/releases/download/${latest}/${iso}.iso.01 >> ${iso}.iso
 
 echo -e "\nVerifying sha256 checksums"
 
@@ -117,13 +113,6 @@ if [[ ${actual_iso_chksum} != ${downloaded_iso_chksum} ]]
 then
 echo -e "\nError: Failed to verify sha256 checksums of the ISO"
 rm $HOME/Downloads/${iso}.iso
-fi
-
-rm $HOME/Downloads/${iso}.iso.00
-rm $HOME/Downloads/${iso}.iso.01
-
-if [[ ${actual_iso_chksum} != ${downloaded_iso_chksum} ]]
-then
 exit 1
 fi
 
