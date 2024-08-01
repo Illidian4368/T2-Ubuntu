@@ -106,7 +106,7 @@ apt-get install -y -qq -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="
   make \
   gcc \
   dkms \
-  iwd \
+  gdisk \
   apple-t2-audio-config \
   apple-firmware-script
 
