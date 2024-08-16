@@ -10,4 +10,4 @@ If this method doesn't work, follow [this guide](https://wiki.t2linux.org/guides
 
 ## Adding support for customisable Touch Bar:
 
-If your Mac has a Touch Bar, and you want to customise it, install `tiny-dfr` by running `sudo apt update && sudo apt install tiny-dfr`. After i stalling restart your Mac and run `sudo touchbar` to customise.
+If your Mac has a Touch Bar, and you want to customise it, install `tiny-dfr` by running `sudo apt update && sudo apt install tiny-dfr`. After installing restart your Mac and run `sudo touchbar` to customise.
