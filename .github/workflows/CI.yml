@@ -65,8 +65,8 @@ jobs:
           cat << EOF > update.py
           import json
           # Define the new links
-          new_link1 = "https://github.com/t2linux/T2-Ubuntu/releases/download/v${{ env.isotag }}/ubuntu-24.04-${{ env.kver }}-t2-noble.iso.00"
-          new_link2 = "https://github.com/t2linux/T2-Ubuntu/releases/download/v${{ env.isotag }}/ubuntu-24.04-${{ env.kver }}-t2-noble.iso.01"
+          new_link1 = "https://github.com/t2linux/T2-Ubuntu/releases/download/v${{ env.isotag }}/ubuntu-24.10-${{ env.kver }}-t2-oracular.iso.00"
+          new_link2 = "https://github.com/t2linux/T2-Ubuntu/releases/download/v${{ env.isotag }}/ubuntu-24.10-${{ env.kver }}-t2-oracular.iso.01"
           # Load the JSON file
           with open('distro-metadata.json', 'r') as file:
               data = json.load(file)
@@ -76,7 +76,7 @@ jobs:
                   if distro['name'] == name:
                       distro['iso'] = new_links
           # Update the links
-          update_links(data['all'], "Ubuntu 24.04 - Noble Numbat", [new_link1, new_link2])
+          update_links(data['all'], "Ubuntu 24.10 - Oracular Oriole", [new_link1, new_link2])
           # Save the updated JSON back to the file
           with open('distro-metadata.json', 'w') as file:
               json.dump(data, file, indent=2)
@@ -99,4 +99,4 @@ jobs:
           user-email: github-actions[bot]@users.noreply.github.com
           user-name: github-actions[bot]
           target-branch: master
-          commit-message: Distro metadata - Update Ubuntu 24.04 to v${{ env.isotag }}
+          commit-message: Distro metadata - Update Ubuntu 24.10 to v${{ env.isotag }}
