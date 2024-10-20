@@ -88,12 +88,13 @@ apt-get install -y -qq -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="
   plymouth-theme-kubuntu-text \
   plymouth-theme-ubuntu-text \
   kde-plasma-desktop \
+  kubuntu-desktop \
   kubuntu-settings-desktop \
-  plasma-discover \
   kubuntu-wallpapers \
+  kde-plasma-desktop \
   sddm-theme-breeze \
   snapd \
-  firefox
+  software-properties-common \
 
 echo >&2 "===]> Info: Install Graphical installer... "
 
