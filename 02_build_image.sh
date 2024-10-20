@@ -37,7 +37,7 @@ done
 
 echo >&2 "===]> Info: Create diskdefines... "
 cat <<EOF >"${IMAGE_PATH}"/README.diskdefines
-#define DISKNAME  Kubuntu MBP 24.04 LTS "Noble Numbat" - amd64
+#define DISKNAME  Kubuntu MBP 24.10 "Oracular Oriole" - amd64
 #define TYPE  binary
 #define TYPEbinary  1
 #define ARCH  amd64
