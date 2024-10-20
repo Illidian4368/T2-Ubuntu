@@ -57,7 +57,6 @@ apt-get install -y -qq -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="
   network-manager \
   resolvconf \
   net-tools \
-  #wireless-tools \
   locales \
   initramfs-tools \
   binutils \
