@@ -82,7 +82,8 @@ apt-get install -y -qq -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="
 echo >&2 "===]> Info: Install window manager... "
 
 apt-get install -y -qq -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" \
-  plymouth-theme-ubuntu-logo \
+  plymouth-theme-spinner \
+  plymouth-theme-ubuntu-text \
   ubuntu-desktop-minimal \
   ubuntu-gnome-wallpapers \
   snapd
