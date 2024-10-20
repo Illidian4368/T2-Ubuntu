@@ -2,7 +2,7 @@
 
 set -eu -o pipefail
 
-CODENAME=jammy
+CODENAME=noble
 
 echo >&2 "===]> Info: Configure environment... "
 
@@ -141,13 +141,13 @@ apt-get purge -y -qq \
   xiterm+thai \
   vim \
   linux-generic \
-  linux-headers-5.15.0-72 \
-  linux-headers-5.15.0-72-generic \
+  linux-headers-6.8.0-31 \
+  linux-headers-6.8.0-31-generic \
   linux-headers-generic \
-  linux-image-5.15.0-72-generic \
+  linux-image-6.8.0-31-generic \
   linux-image-generic \
-  linux-modules-5.15.0-72-generic \
-  linux-modules-extra-5.15.0-72-generic
+  linux-modules-6.8.0-31-generic \
+  linux-modules-extra-6.8.0-31-generic \
 
 apt-get autoremove -y
 
