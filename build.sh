@@ -85,7 +85,7 @@ do
   fi
   ### Split iso into multiple parts - github max size of release attachment is 2GB, where ISO is sometimes bigger than that
   cd "${ROOT_PATH}"
-  split -b 2000M -x "${ROOT_PATH}/kubuntu-24.10-${KERNEL_VERSION}-${ALTERNATIVE}.iso" "${ROOT_PATH}/output/kubuntu-24.10-${KERNEL_VERSION}-${ALTERNATIVE}.iso."
+  split -b 1500M -x "${ROOT_PATH}/kubuntu-24.10-${KERNEL_VERSION}-${ALTERNATIVE}.iso" "${ROOT_PATH}/output/kubuntu-24.10-${KERNEL_VERSION}-${ALTERNATIVE}.iso."
 done
 ## Calculate sha256 sums of built ISO
 sha256sum "${ROOT_PATH}"/*.iso >"${ROOT_PATH}/output/sha256-kubuntu-24.10"
