@@ -67,7 +67,7 @@ jobs:
           # Define the new links
           new_link1 = "https://github.com/t2linux/T2-Ubuntu/releases/download/v${{ env.isotag }}/kubuntu-24.10-${{ env.kver }}-t2-oracular.iso.00"
           new_link2 = "https://github.com/t2linux/T2-Ubuntu/releases/download/v${{ env.isotag }}/kubuntu-24.10-${{ env.kver }}-t2-oracular.iso.01"
-          new_link3 = "https://github.com/t2linux/T2-Ubuntu/releases/download/v${{ env.isotag }}/kubuntu-24.10-${{ env.kver }}-t2-oracular.iso.03"
+          new_link3 = "https://github.com/t2linux/T2-Ubuntu/releases/download/v${{ env.isotag }}/kubuntu-24.10-${{ env.kver }}-t2-oracular.iso.02"
           # Load the JSON file
           with open('distro-metadata.json', 'r') as file:
               data = json.load(file)
